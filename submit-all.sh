@@ -16,10 +16,6 @@ do
   sleep 2s
 done &&\
 echo "ermod_jobs: ${ermod_jobs[*]}" &&\
-#------ combine --------
-eval combine_job=$(./submit-combine.sh ${ermod_jobs[*]} | tail -n 1) &&\
-sleep 2s &&\
-echo "combine_job: $combine_job" &&\
 #------ decond --------
-eval decond_job=$(./submit-decond.sh ${combine_job} | tail -n 1) &&\
+eval decond_job=$(./submit-decond.sh ${ermod_jobs[*]} | tail -n 1) &&\
 echo "decond_job: $decond_job"
